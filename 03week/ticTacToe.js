@@ -90,8 +90,6 @@ function getPrompt() {
   });
 }
 
-//can't put numbers like 4,5 or letters etc.
-//allows only for 0,1,2 as input.
 
 // Tests
 

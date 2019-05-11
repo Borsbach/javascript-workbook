@@ -51,20 +51,33 @@ function checkForWin() {
   return false;
 }
 
+function checkInput(input, input2) {
+  if (input <= 2 && input2 <= 2) {
+    return true
+  } else {
+    return false
+  }
+}
+
 function ticTacToe(row, column) {
   // Your code here
-  if (playerTurn === "X") {
-    board[row][column] = "X";
-    playerTurn = "O";
+  if (checkInput(row, column)) {
+    if (playerTurn === "X") {
+      board[row][column] = "X";
+      playerTurn = "O";
+    } else {
+      board[row][column] = "O";
+      playerTurn = "X";
+    } //This checks for win after every move
+    checkForWin();
+    printBoard();
   } else {
-    board[row][column] = "O";
-    playerTurn = "X";
-  } //This checks for win after every move
-  checkForWin(); 
-    printBoard()
-    //stops getting prompt if player wins
-  if (!diagonalWin() && !horizontalWin() && !verticalWin()){
-    getPrompt()
+    console.log("Please input a 0,1 or 2");
+  }
+
+  //stops getting prompt if player wins
+  if (!diagonalWin() && !horizontalWin() && !verticalWin()) {
+    getPrompt();
   }
 }
 
@@ -76,7 +89,6 @@ function getPrompt() {
     });
   });
 }
-
 
 //can't put numbers like 4,5 or letters etc.
 //allows only for 0,1,2 as input.
@@ -100,6 +112,10 @@ if (typeof describe === "function") {
         [" ", "X", " "],
         [" ", " ", " "]
       ]);
+    });
+    it("should test inputcheck for a 0,1, or 2", () => {
+      ticTacToe(1, 6);
+      assert.equal(checkInput(1, 6), false);
     });
     it("should check for vertical wins", () => {
       board = [[" ", "X", " "], [" ", "X", " "], [" ", "X", " "]];

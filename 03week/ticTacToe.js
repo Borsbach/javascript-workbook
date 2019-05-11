@@ -46,10 +46,11 @@ function checkForWin() {
     //This displays that someone won
     console.log("You won!");
     //This times the game exit to 1s
-    setTimeout(function() {
-      return process.exit(22);
-    }, 1000);
-  return true ;
+    // setTimeout(function() {
+      // return process.exit(22);
+    // }, 1000);
+    //This is checking for win and stops game
+    return true;
   }
   return false;
 }
@@ -62,18 +63,21 @@ function ticTacToe(row, column) {
   } else {
     board[row][column] = "O";
     playerTurn = "X";
-  }//This checks for win after every move
-  checkForWin();
+  } //This checks for win after every move
+  checkForWin(); 
+    printBoard()
+  if (!diagonalWin() && !horizontalWin() && !verticalWin()){
+    getPrompt()
+  }
 }
 
 function getPrompt() {
-  printBoard();
+  // printBoard();
   console.log("It's Player " + playerTurn + "'s turn.");
   rl.question("row: ", row => {
     rl.question("column: ", column => {
-      ticTacToe(row, column); 
-        // if (checkForWin === true)
-       getPrompt();
+      ticTacToe(row, column);
+      // getPrompt();
     });
   });
 }

@@ -42,8 +42,15 @@ function diagonalWin() {
 
 function checkForWin() {
   // Your code here
-  if (diagonalWin() || horizontalWin() || verticalWin()) 
-  return true;
+  if (diagonalWin() || horizontalWin() || verticalWin()) {
+    //This displays that someone won
+    console.log("You won!");
+    //This times the game exit to 1s
+    setTimeout(function() {
+      return process.exit(22);
+    }, 1000);
+  return true ;
+  }
   return false;
 }
 
@@ -55,7 +62,8 @@ function ticTacToe(row, column) {
   } else {
     board[row][column] = "O";
     playerTurn = "X";
-  }
+  }//This checks for win after every move
+  checkForWin();
 }
 
 function getPrompt() {
@@ -63,8 +71,9 @@ function getPrompt() {
   console.log("It's Player " + playerTurn + "'s turn.");
   rl.question("row: ", row => {
     rl.question("column: ", column => {
-      ticTacToe(row, column);
-      getPrompt();
+      ticTacToe(row, column); 
+        // if (checkForWin === true)
+       getPrompt();
     });
   });
 }

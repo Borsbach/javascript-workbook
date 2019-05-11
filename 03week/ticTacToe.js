@@ -45,10 +45,6 @@ function checkForWin() {
   if (diagonalWin() || horizontalWin() || verticalWin()) {
     //This displays that someone won
     console.log("You won!");
-    //This times the game exit to 1s
-    // setTimeout(function() {
-      // return process.exit(22);
-    // }, 1000);
     //This is checking for win and stops game
     return true;
   }
@@ -66,23 +62,22 @@ function ticTacToe(row, column) {
   } //This checks for win after every move
   checkForWin(); 
     printBoard()
+    //stops getting prompt if player wins
   if (!diagonalWin() && !horizontalWin() && !verticalWin()){
     getPrompt()
   }
 }
 
 function getPrompt() {
-  // printBoard();
   console.log("It's Player " + playerTurn + "'s turn.");
   rl.question("row: ", row => {
     rl.question("column: ", column => {
       ticTacToe(row, column);
-      // getPrompt();
     });
   });
 }
 
-//logic after 5 keep checking for win playing after 9 term game
+
 //can't put numbers like 4,5 or letters etc.
 //allows only for 0,1,2 as input.
 

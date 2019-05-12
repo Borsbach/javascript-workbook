@@ -53,9 +53,9 @@ function checkForWin() {
 
 function checkInput(input, input2) {
   if (input <= 2 && input2 <= 2) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 }
 
@@ -89,7 +89,6 @@ function getPrompt() {
     });
   });
 }
-
 
 // Tests
 
